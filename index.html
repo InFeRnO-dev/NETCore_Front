@@ -19,9 +19,11 @@
             <div class="row">
                 <form class="col s12">
                     <div class="row">
-                        <div class="input-field col s6">
-                            <input id="inputaddiduser" type="text" class="validate">
-                            <label for="inputaddiduser">Trigramme</label>
+                        <div class="input-field col s6" id="selectuserdiv">
+                            <select id="selectuser">
+
+                            </select>
+                            <label for="selectuser">User</label>
                         </div>
                         <div class="input-field col s6">
                             <input id="inputaddnom" type="text" class="validate">
@@ -36,10 +38,47 @@
         </div>
     </div>
 
+    <div id="modalEditProject" class="modal">
+        <div class="modal-content">
+            <h4>Modifier</h4>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="inputiduser" type="text" class="validate">
+                            <label for="inputiduser">Trigramme</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="inputnom" type="text" class="validate">
+                            <label for="inputnom">Nom</label>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button onclick="indexController.editProject()" class="waves-effect waves-green btn-flat" id="btnValidEdit">Valider</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalDeleteProject" class="modal">
+        <div class="modal-content">
+            <h4>Supprimer</h4>
+            <div class="row">
+                <h5>Etes vous sur de vouloir supprimer ce projet et tous les éléments liés ?</h5>
+                <div class="modal-footer">
+                    <button onclick="indexController.deleteProject()" class="modal-close waves-effect waves-green btn-flat" id="btnValidDelete">Oui</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script type="application/ecmascript" src="app/tools.js"></script>
+    <script type="application/ecmascript" src="app/services/userapi.js"></script>
     <script type="application/ecmascript" src="app/services/projectapi.js"></script>
     <script type="application/ecmascript" src="app/model/classes.js"></script>
+    <script type="application/ecmascript" src="app/model/modelUser.js"></script>
     <script type="application/ecmascript" src="app/model/modelProject.js"></script>
     <script type="application/ecmascript" src="app/controllers/basecontroller.js"></script>
     <script>navigate("index")</script>

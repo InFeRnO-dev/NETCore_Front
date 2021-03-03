@@ -1,49 +1,49 @@
 class Projets{
     constructor(id_user, nom) {
-        this.Id_user = id_user
-        this.Nom = nom
+        this.id_user = id_user
+        this.nom = nom
     }
 }
 class User{
-    constructor(Id_user, Username, Password, Droits) {
-        this.Id_user = Id_user
-        this.Username = Username
-        this.Password = Password
-        this.Droits = Droits
+    constructor(id_user, username, password, droits) {
+        this.id_user = id_user
+        this.username = username
+        this.password = password
+        this.droits = droits
     }
 }
 class exigences{
-    constructor(Description, Type, Fonctionnel) {
-        this.Description = Description
-        this.Type = Type
-        this.Fonctionnel = Fonctionnel
+    constructor(description, type, fonctionnel) {
+        this.description = description
+        this.type = type
+        this.fonctionnel = fonctionnel
     }
 }
 class jalons{
-    constructor(Libelle, Id_user, Date_livraison_prevue, Date_livraison_reelle) {
-        this.Libelle = Libelle
-        this.Id_user = Id_user
-        this.Date_livraison_prevue = Date_livraison_prevue
-        this.Date_livraison_reelle = Date_livraison_reelle
+    constructor(libelle, id_user, date_livraison_prevue, date_livraison_reelle) {
+        this.libelle = libelle
+        this.id_user = id_user
+        this.date_livraison_prevue = date_livraison_prevue
+        this.date_livraison_reelle = date_livraison_reelle
     }
 }
 class taches{
-    constructor(Libelle, Description, Id_user, Date_debut_theorique, Date_debut_reelle, Charge, Termine, Id_tache_liee) {
-        this.Libelle = Libelle
-        this.Description = Description
-        this.Id_user = Id_user
-        this.Date_debut_theorique = Date_debut_theorique
-        this.Date_debut_reelle = Date_debut_reelle
-        this.Charge = Charge
-        this.Termine = Termine
-        this.Id_tache_liee = Id_tache_liee
+    constructor(libelle, description, id_user, date_debut_theorique, date_debut_reelle, charge, termine, id_tache_liee) {
+        this.libelle = libelle
+        this.description = description
+        this.id_user = id_user
+        this.date_debut_theorique = date_debut_theorique
+        this.date_debut_reelle = date_debut_reelle
+        this.charge = charge
+        this.termine = termine
+        this.id_tache_liee = id_tache_liee
     }
 }
 class liaison_exigences_taches{
-    constructor(Id_Projets, Id_Exigences, Id_Taches, Id_Jalons) {
-        this.Id_Projets = Id_Projets
-        this.Id_Exigences = Id_Exigences
-        this.Taches = Id_Taches
-        this.Id_Jalons = Id_Jalons
+    constructor(id_projets, id_exigences, id_taches, id_jalons) {
+        this.id_projets = id_projets
+        this.id_exigences = id_exigences
+        this.id_taches = id_taches
+        this.id_jalons = Id_jalons
     }
 }
