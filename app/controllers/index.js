@@ -12,11 +12,19 @@ class IndexController extends BaseController {
     closeModal (modal) {            //fonction de fermeture d'un modal
         this.getModal(modal).close()
     }
+    getidproject(){
+        return this.idproject
+    }
+    goToExigences(idproject){
+        this.idproject = idproject
+        navigate('exigence')
+    }
     async displayProjects(){
         let content = ''
         try{
             const projects = await this.modelProject.getAllProjects()
             for (const project of projects) {
+                this.project = project
                 content += `
                                 <div class="col s3 m4">
                                     <div id="cardindex" class="card">
@@ -25,7 +33,7 @@ class IndexController extends BaseController {
                                         <p style="font-family: 'Arial'; color: #ffb962"> By: ${project.id_user}</p>
                                     </div>
                                     <div class="card-action" style="background-color: #7c7c7c !important;">
-                                        <a type="button" onclick="navigate('exigences') ; this.project = project">Voir plus</a>
+                                        <a type="button" onclick="indexController.goToExigences(${project.id})">Voir plus</a>
                                         <a type="button" onclick="indexController.displayEditProject(${project.id})"><i class="material-icons">create</i></a>
                                         <a type="button" onclick="indexController.displayDeleteProject(${project.id})"><i class="material-icons">delete</i></a>
                                     </div>
@@ -48,7 +56,6 @@ class IndexController extends BaseController {
         try {
             let content = ''
             for(const user of await this.modelUser.getAllUser()) {
-                console.log(user)
                 content += `<option value="${user.id_user}">${user.id_user}</option>`
             }
             this.selectuser.innerHTML = content
@@ -61,7 +68,6 @@ class IndexController extends BaseController {
 
     async addProject(){
         let inputaddiduser = document.getElementById('selectuser').value
-        console.log(inputaddiduser)
         let inputaddnom = this.validateRequiredField("#inputaddnom", 'Nom')
         if (inputaddiduser === null || inputaddnom === null) return
         try {
@@ -90,7 +96,6 @@ class IndexController extends BaseController {
                 this.displayNotFoundError()
                 return
             }
-            $("#inputiduser").value = project.id_user
             $('#inputnom').value = project.nom
             this.Project = project
             this.openModal('#modalEditProject')
@@ -99,18 +104,15 @@ class IndexController extends BaseController {
             this.displayServiceError()
         }
     }
-    async editProject() {          //Fonction d'edition et d'update de la liste dans la table
+    async editProject() {          //Fonction d'update du projet
         const project = this.Project
-        let inputiduser = this.validateRequiredField("#inputiduser", 'Trigramme')
         let inputnom =  this.validateRequiredField("#inputnom", 'Nom')
-        if ((inputiduser != null) && (inputnom != null)) {
+        if (inputnom != null) {
             try {
-                project.id_user = inputiduser
                 project.nom = inputnom
-                console.log(await this.modelProject.update(project) )
                 if (await this.modelProject.update(project) === 200) {
                     this.closeModal('#modalEditProject')
-                    this.toast("Les information du projet ont été modifiée")
+                    this.toast("Les informations du projet ont été modifiées")
                     this.displayProjects()
                 } else {
                     this.displayServiceError()
@@ -140,7 +142,7 @@ class IndexController extends BaseController {
             this.displayServiceError()
         }
     }
-    async deleteProject() {                //fonction de suppression d'une liste
+    async deleteProject() {                //fonction de suppression d'un projet
         const project = this.project
         try {
             if (await this.modelProject.delete(project) === 200) {

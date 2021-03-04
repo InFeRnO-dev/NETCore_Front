@@ -3,6 +3,8 @@ class BaseController {
         M.AutoInit();
         this.modelProject = new ModelProject()
         this.modelUser = new ModelUser()
+        this.modelExigence = new ModelExigence()
+        this.modelLiaison = new ModelLiaison()
     }
     validateRequiredField(selector, name) {
         const value =  $(selector).value

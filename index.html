@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="res/css/index.css"/>
 </head>
 <body>
+
     <div id="content"></div> <!-- NE PAS SUPPRIMER C'EST IMPORTANT SINON MARCHE PLUS-->
 
     <div id="modalAddProject" class="modal">
@@ -45,10 +46,6 @@
                 <form class="col s12">
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="inputiduser" type="text" class="validate">
-                            <label for="inputiduser">Trigramme</label>
-                        </div>
-                        <div class="input-field col s6">
                             <input id="inputnom" type="text" class="validate">
                             <label for="inputnom">Nom</label>
                         </div>
@@ -73,13 +70,101 @@
         </div>
     </div>
 
+    <div id="modalAddExigence" class="modal">
+        <div class="modal-content">
+            <h4>Ajouter une exigence</h4>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <textarea id="inputaddexigencedescription" class="materialize-textarea"></textarea>
+                            <label for="inputaddexigencedescription">Description</label>
+                        </div>
+                        <div class="input-field col s4" id="selectexigence">
+                            <select onchange="exigencesController.selectType()" id="selectexigencefonctionnel">
+                                <option value="Oui">Oui</option>
+                                <option value="Non">Non</option>
+                            </select>
+                            <label for="selectexigencefonctionnel">Fonctionnel</label>
+                        </div>
+                        <div class="input-field col s4" id="selectexigence2">
+                            <select id="selectexigencetype"><!-- disabled -->
+                                <option value="Données">Données</option>
+                                <option value="Performances">Performances</option>
+                                <option value="Interface utilisateur">Interface</option>
+                                <option value="Qualité">Qualité</option>
+                                <option value="Services">Services</option>
+                            </select>
+                            <label for="selectexigencetype">Type</label>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button onclick="exigencesController.addExigences()" class="waves-effect waves-green btn-flat" id="btnValidAddExigence">Valider</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalEditExigence" class="modal">
+        <div class="modal-content">
+            <h4>Modifier</h4>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <input id="inputeditexigencedescription" type="text" class="validate">
+                            <label for="inputeditexigencedescription">Nom</label>
+                        </div>
+                        <div class="input-field col s4" id="editexigence">
+                            <select onchange="exigencesController.selectType()" id="editexigencefonctionnel">
+                                <option value="Oui">Oui</option>
+                                <option value="Non">Non</option>
+                            </select>
+                            <label for="editexigencefonctionnel">Fonctionnel</label>
+                        </div>
+                        <div class="input-field col s4" id="editexigence2">
+                            <select id="editexigencetype"><!-- disabled -->
+                                <option value="Données">Données</option>
+                                <option value="Performances">Performances</option>
+                                <option value="Interface utilisateur">Interface</option>
+                                <option value="Qualité">Qualité</option>
+                                <option value="Services">Services</option>
+                            </select>
+                            <label for="editexigencetype">Type</label>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button onclick="exigencesController.editExigence()" class="waves-effect waves-green btn-flat" id="btnValidEditExigence">Valider</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalDeleteExigence" class="modal">
+        <div class="modal-content">
+            <h4>Supprimer</h4>
+            <div class="row">
+                <h5>Etes vous sur de vouloir supprimer cette exigence et tous les éléments liés ?</h5>
+                <div class="modal-footer">
+                    <button onclick="exigencesController.deleteExigence()" class="modal-close waves-effect waves-green btn-flat" id="btnValidDeleteExigence">Oui</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script type="application/ecmascript" src="app/tools.js"></script>
+    <script type="application/ecmascript" src="app/services/exigenceapi.js"></script>
     <script type="application/ecmascript" src="app/services/userapi.js"></script>
     <script type="application/ecmascript" src="app/services/projectapi.js"></script>
+    <script type="application/ecmascript" src="app/services/liaisonapi.js"></script>
     <script type="application/ecmascript" src="app/model/classes.js"></script>
+    <script type="application/ecmascript" src="app/model/modelExigence.js"></script>
     <script type="application/ecmascript" src="app/model/modelUser.js"></script>
     <script type="application/ecmascript" src="app/model/modelProject.js"></script>
+    <script type="application/ecmascript" src="app/model/modelLiaison.js"></script>
     <script type="application/ecmascript" src="app/controllers/basecontroller.js"></script>
     <script>navigate("index")</script>
 </body>

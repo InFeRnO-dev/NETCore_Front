@@ -12,14 +12,14 @@ class User{
         this.droits = droits
     }
 }
-class exigences{
+class Exigences{
     constructor(description, type, fonctionnel) {
         this.description = description
         this.type = type
         this.fonctionnel = fonctionnel
     }
 }
-class jalons{
+class Jalons{
     constructor(libelle, id_user, date_livraison_prevue, date_livraison_reelle) {
         this.libelle = libelle
         this.id_user = id_user
@@ -27,7 +27,7 @@ class jalons{
         this.date_livraison_reelle = date_livraison_reelle
     }
 }
-class taches{
+class Taches{
     constructor(libelle, description, id_user, date_debut_theorique, date_debut_reelle, charge, termine, id_tache_liee) {
         this.libelle = libelle
         this.description = description
@@ -39,11 +39,11 @@ class taches{
         this.id_tache_liee = id_tache_liee
     }
 }
-class liaison_exigences_taches{
+class Liaison{
     constructor(id_projets, id_exigences, id_taches, id_jalons) {
         this.id_projets = id_projets
         this.id_exigences = id_exigences
         this.id_taches = id_taches
-        this.id_jalons = Id_jalons
+        this.id_jalons = id_jalons
     }
 }

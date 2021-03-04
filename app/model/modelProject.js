@@ -21,7 +21,6 @@ class ModelProject {
         return this.apiproject.insert(obj).then(res => res.status)
     }
     async update(obj){
-        console.log(obj)
         return this.apiproject.update(obj).then(res => res.status)
     }
     async delete(obj){
