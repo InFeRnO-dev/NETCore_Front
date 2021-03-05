@@ -1,11 +1,20 @@
 class ExigencesController extends BaseController{
     constructor() {
         super();
+        this.eventCheckBoxAdd()
+        this.eventCheckBoxEdit()
         const idproject = indexController.getidproject()
         this.idproject = idproject
         this.tableAllExigences = document.getElementById('tableAllExigences')
         this.tableBodyAllExigences = document.getElementById('tableBodyAllExigences')
         this.displayExigences()
+    }
+    getidexigence(){
+        return this.idexigence
+    }
+    goToTaches(idexigence){
+        this.idexigence = idexigence
+        navigate('tache')
     }
     async displayExigences(){
         let content = ''
@@ -24,7 +33,8 @@ class ExigencesController extends BaseController{
                     <td>${fonctionnel}</td>
                     <td>${exigence.type}</td>
                     <td><button class="btn" onclick="exigencesController.displayEditExigence(${exigence.id})"><i class="material-icons">edit</i></button></td>
-                    <td><button class="btn" onclick="exigencesController.displayDeleteExigence(${exigence.id})" disabled><i class="material-icons">delete</i></button></td></tr>`
+                    <td><button class="btn" onclick="exigencesController.displayDeleteExigence(${exigence.id})" disabled><i class="material-icons">delete</i></button></td>
+                    <td><button class="btn" onclick="exigencesController.goToTaches(${exigence.id})">Taches</button></td></tr>`
             }
             this.tableBodyAllExigences.innerHTML = content
             this.tableAllExigences.style.display = "block"
@@ -33,26 +43,35 @@ class ExigencesController extends BaseController{
             this.displayServiceError()
         }
     }
-    async selectType(){
-        let selectexigencefonctionnel = document.getElementById('selectexigencefonctionnel').value
-        let selectexigencetype = document.getElementById('selectexigencetype')
-        if(selectexigencefonctionnel === "Non"){
-            console.log("enable")
-            selectexigencetype.disabled = false
-        }
-        else {
-            console.log("disable")
-            selectexigencetype.disabled = true
-        }
+    eventCheckBoxAdd(){
+        let checkbox = document.querySelector("input[name=checkbox]");
+        checkbox.addEventListener( 'change', function() {
+            if(this.checked) {
+                document.getElementById('typeexigence').style.display = "none"
+            } else {
+                document.getElementById('typeexigence').style.display = "block"
+            }
+        });
+    }
+    eventCheckBoxEdit(){
+        let checkbox = document.querySelector("input[name=checkbox2]");
+        checkbox.addEventListener( 'change', function() {
+            if(this.checked) {
+                document.getElementById('typeexigenceedit').style.display = "none"
+            } else {
+                document.getElementById('typeexigenceedit').style.display = "block"
+            }
+        });
     }
     async addExigences(){
         let inputaddexigencedescription = this.validateRequiredField("#inputaddexigencedescription", 'Description')
-        let selectexigencefonctionnel = document.getElementById('selectexigencefonctionnel').value
+        let cbaddfonctionnel = document.getElementById('cbaddfonctionnel').checked
         let selectexigencetype = document.getElementById('selectexigencetype').value
         let fonctionnel
-        if (inputaddexigencedescription === null || selectexigencefonctionnel === null || selectexigencetype === null) return
-        if (selectexigencefonctionnel === "Oui"){
+        if (inputaddexigencedescription === null || selectexigencetype === null) return
+        if(cbaddfonctionnel === true){
             fonctionnel = 1
+            selectexigencetype = "None"
         } else {
             fonctionnel = 0
         }
@@ -71,6 +90,8 @@ class ExigencesController extends BaseController{
             console.log(err)
             this.displayServiceError()
         }
+        document.getElementById('inputaddexigencedescription').value = ""
+        document.getElementById('cbaddfonctionnel').checked = false
     }
 
     async displayEditExigence(id) {                 //Fonction d'affichage du modal onclick btn edit
@@ -85,14 +106,8 @@ class ExigencesController extends BaseController{
                 return
             }
             document.getElementById('inputeditexigencedescription').value = exigence.description
-            if (exigence.fonctionnel === 0)
-            {
-                $('#editexigencefonctionnel').value = "Oui"
-            } else
-            {
-                $('#editexigencefonctionnel').value = "Non"
-            }
-            $('#editexigencetype').value = exigence.type
+            document.getElementById('cbeditfonctionnel').checked = exigence.fonctionnel === 0 ? true : false
+            document.getElementById('editexigencetype').value
             this.Exigence = exigence
             indexController.openModal('#modalEditExigence')
         } catch (err) {
@@ -104,10 +119,11 @@ class ExigencesController extends BaseController{
         const exigence = this.Exigence
         let fonctionnel
         let editdescription =  this.validateRequiredField("#inputeditexigencedescription", 'Description')
-        let editexigencefonctionnel = document.getElementById('editexigencefonctionnel').value
+        let editexigencefonctionnel = document.getElementById('cbeditfonctionnel').checked
         let editexigencetype = document.getElementById('editexigencetype').value
-        if (editexigencefonctionnel === "Oui"){
+        if(editexigencefonctionnel === true){
             fonctionnel = 1
+            editexigencetype = "None"
         } else {
             fonctionnel = 0
         }

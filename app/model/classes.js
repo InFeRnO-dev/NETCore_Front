@@ -28,13 +28,14 @@ class Jalons{
     }
 }
 class Taches{
-    constructor(libelle, description, id_user, date_debut_theorique, date_debut_reelle, charge, termine, id_tache_liee) {
+    constructor(libelle, description, id_user, date_debut_theorique, date_debut_reelle, charge, encours, termine, id_tache_liee) {
         this.libelle = libelle
         this.description = description
         this.id_user = id_user
         this.date_debut_theorique = date_debut_theorique
         this.date_debut_reelle = date_debut_reelle
         this.charge = charge
+        this.encours = encours
         this.termine = termine
         this.id_tache_liee = id_tache_liee
     }

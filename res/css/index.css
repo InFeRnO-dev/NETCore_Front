@@ -1,4 +1,5 @@
 #cardsindex {
-    max-width: 90%;
-    max-height: 90%;
+    width: 90%; !important;
+    height: 90%; !important;
 }
+#modalAddTache { width: 75% !important ; height: 75% !important ; }

@@ -1,10 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<nav style="background-color: navy" class="navbar navbar-expand-lg navbar-light lg-light">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a style="color: white" class="nav-link" type="button" onclick="indexController.openModal('#modalAddTache'); tacheController.displayTachesliee()">Ajouter une tache</a>
+        </li>
+        <li class="nav-item">
+            <a style="color: white" class="nav-link" type="button" onclick="indexController.openModal('#')">Jalons</a>
+        </li>
+    </ul>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li class="nav-item">
+            <a id="titleproject" style="font-family: 'Arial Black'; font-size: larger; color: white" type="button" class="nav-link" onclick="navigate('tache')">Taches</a>
+        </li>
+        <li class="nav-item">
+            <a style="font-family: 'Arial Black'; font-size: larger; color: white" type="button" class="nav-link" onclick="navigate('index')">Accueil</a>
+        </li>
+    </ul>
+</nav>
 
-</body>
-</html>
+<div class="row">
+    <div class="col s2"></div>
+    <div class="col s10">
+        <table id="tableAllTaches" style="display: none;">
+            <thead>
+            <tr>
+                <th scope="col">Libelle</th>
+                <th scope="col">Description</th>
+                <th scope="col">Trigramme</th>
+                <th scope="col">Debut theorique</th>
+                <th scope="col">Debut reel</th>
+                <th scope="col">Charge(jours)</th>
+                <th scope="col">En cours</th>
+                <th scope="col">Terminée</th>
+                <th scope="col">Tache liée</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody id="tableBodyAllTaches">
+            </tbody>
+        </table>
+    </div>
+</div>

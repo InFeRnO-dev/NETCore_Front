@@ -2,6 +2,10 @@ class IndexController extends BaseController {
 
     constructor() {
         super();
+
+        const iduser = loginController.getiduser()
+        this.iduser = iduser
+        console.log(this.iduser)
         this.cardsindex = document.getElementById('cardsindex')
         this.selectuser = document.getElementById('selectuser')
         this.displayProjects()
@@ -22,21 +26,21 @@ class IndexController extends BaseController {
     async displayProjects(){
         let content = ''
         try{
-            const projects = await this.modelProject.getAllProjects()
+            const projects = await this.modelProject.getAllProjectsByIduser(this.iduser)
             for (const project of projects) {
                 this.project = project
                 content += `
-                                <div class="col s3 m4">
+                                <div class="col s3 l5">
                                     <div id="cardindex" class="card">
-                                    <div class="card-content" style="background-color: #a7a7a7 !important;" >
-                                        <p style="font-family: 'Arial Black';color: #ffb962" class="card-title">${project.nom}</p>
-                                        <p style="font-family: 'Arial'; color: #ffb962"> By: ${project.id_user}</p>
-                                    </div>
-                                    <div class="card-action" style="background-color: #7c7c7c !important;">
-                                        <a type="button" onclick="indexController.goToExigences(${project.id})">Voir plus</a>
-                                        <a type="button" onclick="indexController.displayEditProject(${project.id})"><i class="material-icons">create</i></a>
-                                        <a type="button" onclick="indexController.displayDeleteProject(${project.id})"><i class="material-icons">delete</i></a>
-                                    </div>
+                                        <div class="card-content" style="background-color: #406aff !important;" >
+                                            <p style="font-family: 'Arial Black';color: white" class="card-title">${project.nom}</p>
+                                            <p style="font-family: 'Arial'; color: white"> By: ${project.id_user}</p>
+                                        </div>
+                                        <div class="card-action" style="background-color: navy !important;">
+                                            <a style="color: white" type="button" onclick="indexController.goToExigences(${project.id})">Voir plus</a>
+                                            <a style="color: white" type="button" onclick="indexController.displayEditProject(${project.id})"><i class="material-icons">create</i></a>
+                                            <a style="color: white" type="button" onclick="indexController.displayDeleteProject(${project.id})"><i class="material-icons">delete</i></a>
+                                        </div>
                                     </div>
                                 </div>
                             `
@@ -47,11 +51,6 @@ class IndexController extends BaseController {
             this.displayServiceError()
         }
     }
-    async displayprojectname(){
-        let project = this.project
-        return project.nom.toString()
-    }
-
     async displayUser() {
         try {
             let content = ''

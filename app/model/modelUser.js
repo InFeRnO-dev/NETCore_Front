@@ -3,6 +3,9 @@ class ModelUser{
         this.apiuser = new Userapi()
     }
 
+    async authenticate(login, password){
+        return await this.apiuser.authenticate(login, password)
+    }
     async getAllUser(){
             let users = []
             for(let user of await this.apiuser.getAllUser()){

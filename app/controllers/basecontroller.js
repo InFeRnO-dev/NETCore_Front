@@ -5,6 +5,7 @@ class BaseController {
         this.modelUser = new ModelUser()
         this.modelExigence = new ModelExigence()
         this.modelLiaison = new ModelLiaison()
+        this.modelTache = new ModelTache()
     }
     validateRequiredField(selector, name) {
         const value =  $(selector).value

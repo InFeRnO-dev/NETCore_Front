@@ -4,6 +4,13 @@ class ModelProject {
         this.apiproject = new Projectapi()
     }
 
+    async getAllProjectsByIduser(id){
+        let projects = []
+        for(let project of await this.apiproject.getAllProjectsByIduser(id)){
+            projects.push(Object.assign(new Projets(), project))
+        }
+        return projects
+    }
     async getAllProjects(){
         let projects = []
         for(let project of await this.apiproject.getAllProjects()){

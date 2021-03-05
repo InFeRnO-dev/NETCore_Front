@@ -76,18 +76,15 @@
             <div class="row">
                 <form class="col s12">
                     <div class="row">
-                        <div class="input-field col s4">
+                        <div class="input-field col s12">
                             <textarea id="inputaddexigencedescription" class="materialize-textarea"></textarea>
                             <label for="inputaddexigencedescription">Description</label>
                         </div>
-                        <div class="input-field col s4" id="selectexigence">
-                            <select onchange="exigencesController.selectType()" id="selectexigencefonctionnel">
-                                <option value="Oui">Oui</option>
-                                <option value="Non">Non</option>
-                            </select>
-                            <label for="selectexigencefonctionnel">Fonctionnel</label>
+                        <div class="input-field col s6" id="selectexigence">
+                            <h5>Fonctionnel</h5>
+                            <p><label><input id="cbaddfonctionnel" name="checkbox" type="checkbox"/><span></span></label></p>
                         </div>
-                        <div class="input-field col s4" id="selectexigence2">
+                        <div class="input-field col s6" id="typeexigence">
                             <select id="selectexigencetype"><!-- disabled -->
                                 <option value="Données">Données</option>
                                 <option value="Performances">Performances</option>
@@ -112,18 +109,15 @@
             <div class="row">
                 <form class="col s12">
                     <div class="row">
-                        <div class="input-field col s4">
-                            <input id="inputeditexigencedescription" type="text" class="validate">
-                            <label for="inputeditexigencedescription">Nom</label>
+                        <div class="input-field col s12">
+                            <textarea id="inputeditexigencedescription" class="materialize-textarea"></textarea>
+                            <label for="inputeditexigencedescription">Description</label>
                         </div>
-                        <div class="input-field col s4" id="editexigence">
-                            <select onchange="exigencesController.selectType()" id="editexigencefonctionnel">
-                                <option value="Oui">Oui</option>
-                                <option value="Non">Non</option>
-                            </select>
-                            <label for="editexigencefonctionnel">Fonctionnel</label>
+                        <div class="input-field col s6" id="editexigence">
+                            <h5>Fonctionnel</h5>
+                            <p><label><input id="cbeditfonctionnel" name="checkbox2" type="checkbox" /><span></span></label></p>
                         </div>
-                        <div class="input-field col s4" id="editexigence2">
+                        <div class="input-field col s6" id="typeexigenceedit">
                             <select id="editexigencetype"><!-- disabled -->
                                 <option value="Données">Données</option>
                                 <option value="Performances">Performances</option>
@@ -154,18 +148,61 @@
         </div>
     </div>
 
+    <div id="modalAddTache" class="modal">
+        <div class="modal-content">
+            <h4>Ajouter une nouvelle tache</h4>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="inputaddlibelle" type="text" class="validate">
+                            <label for="inputaddlibelle">Libelle</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="inputaddcharge" type="number" class="validate">
+                            <label for="inputaddcharge">Charge(nombre de jours)</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <textarea id="inputadddescription" class="materialize-textarea"></textarea>
+                            <label for="inputadddescription">Description</label>
+                        </div>
+                        <div class="input_field col s6">
+                            <label>Date de debut theorique</label>
+                            <input id="datetheoriqueadd" type="text" class="datepicker">
+                        </div>
+                        <div class="input_field col s6">
+                            <label>Date de debut reelle</label>
+                            <input id="datereelleadd" type="text" class="datepicker">
+                        </div>
+                        <div class="input-field col s12" id="typetacheadd">
+                            <select id="addtachecombobox"><!-- disabled -->
+
+                            </select>
+                            <label for="editexigencetype">Tache Liée</label>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button onclick="tacheController.addTache()" class="waves-effect waves-green btn-flat" id="btnValidAddTache">Valider</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script type="application/ecmascript" src="app/tools.js"></script>
+    <script type="application/ecmascript" src="app/services/tacheapi.js"></script>
     <script type="application/ecmascript" src="app/services/exigenceapi.js"></script>
     <script type="application/ecmascript" src="app/services/userapi.js"></script>
     <script type="application/ecmascript" src="app/services/projectapi.js"></script>
     <script type="application/ecmascript" src="app/services/liaisonapi.js"></script>
     <script type="application/ecmascript" src="app/model/classes.js"></script>
+    <script type="application/ecmascript" src="app/model/modelTache.js"></script>
     <script type="application/ecmascript" src="app/model/modelExigence.js"></script>
     <script type="application/ecmascript" src="app/model/modelUser.js"></script>
     <script type="application/ecmascript" src="app/model/modelProject.js"></script>
     <script type="application/ecmascript" src="app/model/modelLiaison.js"></script>
     <script type="application/ecmascript" src="app/controllers/basecontroller.js"></script>
-    <script>navigate("index")</script>
+    <script>navigate("login")</script>
 </body>
 </html>

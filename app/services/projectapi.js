@@ -2,6 +2,9 @@ const serviceBaseUrlProject = "https://localhost:5001/projets"
 
 class Projectapi {
 
+    getAllProjectsByIduser(id){
+        return fetchJSON(`${serviceBaseUrlProject}/user/${id}`)
+    }
     getAllProjects(){
         return fetchJSON(`${serviceBaseUrlProject}`)
     }
