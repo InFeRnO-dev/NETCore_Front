@@ -13,4 +13,7 @@ class ModelUser{
             }
             return users
     }
+    async getUserById(iduser){
+        return await this.apiuser.getUserById(iduser)
+    }
 }

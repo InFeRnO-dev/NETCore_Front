@@ -25,8 +25,14 @@ class IndexController extends BaseController {
     }
     async displayProjects(){
         let content = ''
+        let user = await this.modelUser.getUserById(this.iduser)
+        let projects;
+        if(user.droits === 1){
+             projects = await this.modelProject.getAllProjects()
+        } else{
+            projects = await this.modelProject.getAllProjectsByIduser(this.iduser)
+        }
         try{
-            const projects = await this.modelProject.getAllProjectsByIduser(this.iduser)
             for (const project of projects) {
                 this.project = project
                 content += `
