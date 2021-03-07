@@ -169,7 +169,7 @@ class ExigencesController extends BaseController{
         try {
             if (await this.modelExigence.delete(exigence) === 200) {
                 indexController.closeModal('#modalDeleteExigence')
-                this.toast("L'exigence a été supprimé")
+                this.toast("L'exigence a été supprimée")
                 this.displayExigences()
             } else {
                 this.displayServiceError()

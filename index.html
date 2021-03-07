@@ -178,12 +178,59 @@
                             <select id="addtachecombobox"><!-- disabled -->
 
                             </select>
-                            <label for="editexigencetype">Tache Liée</label>
+                            <label for="addtachecombobox">Tache Liée</label>
                         </div>
                     </div>
                 </form>
                 <div class="modal-footer">
                     <button onclick="tacheController.addTache()" class="waves-effect waves-green btn-flat" id="btnValidAddTache">Valider</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalEditTache" class="modal">
+        <div class="modal-content">
+            <h4>Editer cette tache</h4>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="inputeditlibelle" type="text" class="validate">
+                            <label for="inputeditlibelle">Libelle</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="inputeditcharge" type="number" class="validate">
+                            <label for="inputeditcharge">Charge(nombre de jours)</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <textarea id="inputeditdescription" class="materialize-textarea"></textarea>
+                            <label for="inputeditdescription">Description</label>
+                        </div>
+                        <div class="input_field col s6">
+                            <label>Date de debut theorique</label>
+                            <input id="datetheoriqueedit" type="text" class="datepicker">
+                        </div>
+                        <div class="input_field col s6">
+                            <label>Date de debut reelle</label>
+                            <input id="datereelleedit" type="text" class="datepicker">
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button onclick="tacheController.editTache()" class="waves-effect waves-green btn-flat" id="btnValidEditTache">Valider</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalDeleteTache" class="modal">
+        <div class="modal-content">
+            <h4>Supprimer</h4>
+            <div class="row">
+                <h5>Etes vous sur de vouloir supprimer cette tache?</h5>
+                <div class="modal-footer">
+                    <button onclick="tacheController.deleteTache()" class="modal-close waves-effect waves-green btn-flat" id="btnValidDeleteTache">Oui</button>
                 </div>
             </div>
         </div>
