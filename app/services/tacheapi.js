@@ -6,7 +6,10 @@ class Tacheapi{
         return fetchJSON(`${serviceBaseUrlTache}/lastid`)
     }
     getAllTachesByExigence(id){
-        return fetchJSON(`${serviceBaseUrlLiaison3}/exigence/${id}`)
+        return fetchJSON(`${serviceBaseUrlLiaison3}/exigence/taches/${id}`)
+    }
+    getAllTachesByJalon(id){
+        return fetchJSON(`${serviceBaseUrlLiaison3}/jalon/taches/${id}`)
     }
     getAllTaches(){
         return fetchJSON(`${serviceBaseUrlTache}`)

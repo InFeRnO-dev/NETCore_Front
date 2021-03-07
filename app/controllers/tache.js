@@ -5,6 +5,8 @@ class TacheController extends BaseController{
         this.iduser = iduser
         const idexigence = exigencesController.getidexigence()
         this.idexigence = idexigence
+        const idjalon = jalonController.getidjalon()
+        this.idjalon = idjalon
         this.addtachecombobox = document.getElementById('addtachecombobox')
         this.tableAllTaches = document.getElementById('tableAllTaches')
         this.tableBodyAllTaches = document.getElementById('tableBodyAllTaches')
@@ -14,8 +16,7 @@ class TacheController extends BaseController{
         let content = ''
         this.tableAllTaches.style.display = "none"
         try{
-            const taches = await this.modelTache.getAllTachesByExigence(this.idexigence)
-
+            const taches = await this.modelTache.getAllTachesByJalon(this.idjalon)
             for (const tache of taches) {
                 let date_theorique = new Date(tache.date_debut_theorique).toLocaleDateString()
                 let date_reelle = new Date(tache.date_debut_reelle).toLocaleDateString()
@@ -92,7 +93,7 @@ class TacheController extends BaseController{
         try {
             if (await this.modelTache.insert(new Taches(inputaddlibelle, inputadddescription, this.iduser, datetheoriqueadd, datereelleadd, inputaddcharge, 0,0, addtachecombobox)) === 200) {
                 let idtache = await this.modelTache.getlastid()
-                await this.modelLiaison.insertTacheForExigence(new Liaison(0, this.idexigence, idtache,0 ))
+                await this.modelLiaison.insertTacheIntoJalonExigence(new Liaison(0, this.idexigence, idtache,this.idjalon ))
                 indexController.closeModal('#modalAddTache')
                 this.toast("L'ajout a été effectué")
                 this.displayTaches()
@@ -179,7 +180,7 @@ class TacheController extends BaseController{
         }
     }
 
-    async deleteExigence() {                //fonction de suppression d'une tache
+    async deleteTache() {                //fonction de suppression d'une tache
         const tache = this.tache
         try {
             if (await this.modelTache.delete(tache) === 200) {

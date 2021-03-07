@@ -12,6 +12,13 @@ class ModelTache {
         }
         return taches
     }
+    async getAllTachesByJalon(id){
+        let taches = []
+        for(let tache of await this.apitache.getAllTachesByJalon(id)){
+            taches.push(Object.assign(new Taches(), tache))
+        }
+        return taches
+    }
     async getAllTaches(){
         let taches = []
         for(let tache of await this.apitache.getAllTaches()){

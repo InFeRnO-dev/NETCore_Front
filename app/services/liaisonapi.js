@@ -8,8 +8,17 @@ class Liaisonapi{
             body: JSON.stringify(obj)
         })
     }
-    async insertTacheForExigence(obj){
-        return fetch(`${serviceBaseUrlLiaison}/exigence`, {
+
+    async insertTacheIntoJalonExigence(obj){
+        return fetch(`${serviceBaseUrlLiaison}/jalon/exigence/tache`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(obj)
+        })
+    }
+
+    async insertJalonForExigence(obj){
+        return fetch(`${serviceBaseUrlLiaison}/exigence/jalon`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(obj)

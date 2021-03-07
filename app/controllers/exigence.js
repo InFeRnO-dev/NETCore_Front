@@ -16,6 +16,10 @@ class ExigencesController extends BaseController{
         this.idexigence = idexigence
         navigate('tache')
     }
+    goToJalons(idexigence){
+        this.idexigence = idexigence
+        navigate('jalon')
+    }
     async displayExigences(){
         let content = ''
         this.tableAllExigences.style.display = "none"
@@ -34,7 +38,7 @@ class ExigencesController extends BaseController{
                     <td>${exigence.type}</td>
                     <td><button class="btn" onclick="exigencesController.displayEditExigence(${exigence.id})"><i class="material-icons">edit</i></button></td>
                     <td><button class="btn" onclick="exigencesController.displayDeleteExigence(${exigence.id})" disabled><i class="material-icons">delete</i></button></td>
-                    <td><button class="btn" onclick="exigencesController.goToTaches(${exigence.id})">Taches</button></td></tr>`
+                    <td><button class="btn" onclick="exigencesController.goToJalons(${exigence.id})">Jalons</button></td></tr>`
             }
             this.tableBodyAllExigences.innerHTML = content
             this.tableAllExigences.style.display = "block"

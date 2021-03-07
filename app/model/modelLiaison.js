@@ -6,7 +6,12 @@ class ModelLiaison {
     async insertExigenceForProject(obj){
         return this.apiliaison.insertExigenceForProject(obj).then(res => res.status)
     }
-    async insertTacheForExigence(obj){
-        return this.apiliaison.insertTacheForExigence(obj).then(res => res.status)
+
+    async insertTacheIntoJalonExigence(obj){
+        return this.apiliaison.insertTacheIntoJalonExigence(obj).then(res => res.status)
+    }
+
+    async insertJalonForExigence(obj){
+        return this.apiliaison.insertJalonForExigence(obj).then(res => res.status)
     }
 }

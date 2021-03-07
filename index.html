@@ -183,7 +183,7 @@
                     </div>
                 </form>
                 <div class="modal-footer">
-                    <button onclick="tacheController.addTache()" class="waves-effect waves-green btn-flat" id="btnValidAddTache">Valider</button>
+                    <button onclick="window.tacheController.addTache()" class="waves-effect waves-green btn-flat" id="btnValidAddTache">Valider</button>
                 </div>
             </div>
         </div>
@@ -236,14 +236,78 @@
         </div>
     </div>
 
+    <div id="modalAddJalon" class="modal">
+        <div class="modal-content">
+            <h4>Ajouter un nouveau jalon</h4>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="inputaddlibellejalon" type="text" class="validate">
+                            <label for="inputaddlibellejalon">Libelle</label>
+                        </div>
+                        <div class="input_field col s6">
+                            <label>Date de livraison prevue</label>
+                            <input id="dateprevueaddjalon" type="text" class="datepicker">
+                        </div>
+                        <div class="input_field col s6">
+                            <label>Date de livraison reelle</label>
+                            <input id="datereelleaddjalon" type="text" class="datepicker">
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button onclick="jalonController.addJalon()" class="waves-effect waves-green btn-flat" id="btnValidAddJalon">Valider</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalEditJalon" class="modal">
+        <div class="modal-content">
+            <h4>Editer ce jalon</h4>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="inputeditlibellejalon" type="text" class="validate">
+                            <label for="inputeditlibellejalon">Libelle</label>
+                        </div>
+                        <div class="input_field col s6">
+                            <label>Date de livraison prevue</label>
+                            <input id="dateprevueeditjalon" type="text" class="datepicker">
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button onclick="jalonController.editJalon()" class="waves-effect waves-green btn-flat" id="btnValidEditJalon">Valider</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalDeleteJalon" class="modal">
+        <div class="modal-content">
+            <h4>Supprimer</h4>
+            <div class="row">
+                <h5>Etes vous sur de vouloir supprimer ce jalon?</h5>
+                <div class="modal-footer">
+                    <button onclick="jalonController.deleteJalon()" class="modal-close waves-effect waves-green btn-flat" id="btnValidDeleteJalon">Oui</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script type="application/ecmascript" src="app/tools.js"></script>
+    <script type="application/ecmascript" src="app/services/jalonapi.js"></script>
     <script type="application/ecmascript" src="app/services/tacheapi.js"></script>
     <script type="application/ecmascript" src="app/services/exigenceapi.js"></script>
     <script type="application/ecmascript" src="app/services/userapi.js"></script>
     <script type="application/ecmascript" src="app/services/projectapi.js"></script>
     <script type="application/ecmascript" src="app/services/liaisonapi.js"></script>
     <script type="application/ecmascript" src="app/model/classes.js"></script>
+    <script type="application/ecmascript" src="app/model/modelJalon.js"></script>
     <script type="application/ecmascript" src="app/model/modelTache.js"></script>
     <script type="application/ecmascript" src="app/model/modelExigence.js"></script>
     <script type="application/ecmascript" src="app/model/modelUser.js"></script>
